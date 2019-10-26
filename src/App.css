@@ -1,9 +1,14 @@
 .app {
+  background-image: url("putThis.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   width: 100%;
+  outline: 5px solid #00ffff;
 }
 
 .calc-wrapper {

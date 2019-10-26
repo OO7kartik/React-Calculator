@@ -3,10 +3,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-weight: lighter;
+  font-weight: bold;
   font-size: 1.4em;
-  background-color: #66ffff;
+  background-color: #00ffff;
   color: #000000;
   flex: 1;
-  outline: 1px solid #888888;
+  outline: 1px solid #000000;
 }
