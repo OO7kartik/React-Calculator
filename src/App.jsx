@@ -30,38 +30,72 @@ function App() {
     }
   };
   const add = () => {
-    // if (isOperator(input.charAt(input.length() - 1))) {
-    //   setInput(input.slice(0, input.length() - 1));
-    // }
-    setPreviousNumber(input);
+    if (previousNumber === "") {
+      setPreviousNumber(input + " +");
+    } else if (!isOperator(previousNumber.charAt(previousNumber.length - 1))) {
+      setPreviousNumber(
+        previousNumber.slice(0, previousNumber.length - 2) + " +"
+      );
+    } else {
+      setPreviousNumber(input);
+    }
     setInput("");
     setOperator("plus");
   };
   const subtract = () => {
-    // if (isOperator(input.charAt(input.length() - 1))) {
-    //   setInput(input.slice(0, input.length() - 1));
-    // }
-    setPreviousNumber(input);
+    if (previousNumber === "") {
+      setPreviousNumber(input + " -");
+    } else if (!isOperator(previousNumber.charAt(previousNumber.length - 1))) {
+      setPreviousNumber(
+        previousNumber.slice(0, previousNumber.length - 2) + " -"
+      );
+    } else {
+      setPreviousNumber(input);
+    }
     setInput("");
     setOperator("subtract");
   };
   const multiply = () => {
-    setPreviousNumber(input);
+    if (previousNumber === "") {
+      setPreviousNumber(input + " *");
+    } else if (!isOperator(previousNumber.charAt(previousNumber.length - 1))) {
+      setPreviousNumber(
+        previousNumber.slice(0, previousNumber.length - 2) + " *"
+      );
+    } else {
+      setPreviousNumber(input);
+    }
     setInput("");
     setOperator("multiply");
   };
   const divide = () => {
-    setPreviousNumber(input);
+    if (previousNumber === "") {
+      setPreviousNumber(input + " /");
+    } else if (!isOperator(previousNumber.charAt(previousNumber.length - 1))) {
+      setPreviousNumber(
+        previousNumber.slice(0, previousNumber.length - 2) + " /"
+      );
+    } else {
+      setPreviousNumber(input);
+    }
     setInput("");
     setOperator("divide");
   };
 
   const evaluate = () => {
-    if (operator === "plus") {
+    if (input === "") {
+      if (!isOperator(previousNumber.charAt(previousNumber.length - 1))) {
+        setInput(previousNumber.slice(0, previousNumber.length - 2));
+      } else {
+        setInput(previousNumber);
+      }
+    } else if (operator === "plus") {
       setInput(
-        Number(parseFloat(previousNumber) + parseFloat(input)).toFixed(2)
+        Number(
+          parseFloat(previousNumber.slice(0, previousNumber.length - 2)) +
+            parseFloat(input)
+        ).toFixed(2)
       );
-      console.log("input: " + input);
     } else if (operator === "subtract") {
       setInput(
         Number(parseFloat(previousNumber) - parseFloat(input)).toFixed(2)
@@ -75,6 +109,7 @@ function App() {
         Number(parseFloat(previousNumber) / parseFloat(input)).toFixed(2)
       );
     }
+    setPreviousNumber("");
     setOperator("");
   };
 
